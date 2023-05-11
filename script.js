@@ -1,15 +1,11 @@
 const trafficLight = document.getElementById('traffic-light');
+const colors = ['red', 'yellow', 'green'];
+let currentColor = 0;
 
 function changeColor() {
-    if (trafficLight.classList.contains('red')) {
-        trafficLight.classList.replace('red', 'yellow');
-    } else if (trafficLight.classList.contains('yellow')) {
-        trafficLight.classList.replace('yellow', 'green');
-    } else if (trafficLight.classList.contains('green')) {
-        trafficLight.classList.replace('green', 'red');
-    }
+    trafficLight.classList.replace(colors[currentColor], colors[(currentColor + 1) % colors.length]);
+    currentColor = (currentColor + 1) % colors.length;
 }
 
 trafficLight.addEventListener('click', changeColor);
-
 setInterval(changeColor, 10000);
